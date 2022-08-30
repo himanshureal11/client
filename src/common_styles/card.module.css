@@ -1,0 +1,16 @@
+.card_paper{
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    padding: .5rem .5rem;
+}
+
+.card_paper:hover{
+    background-color: #75aee8db;
+}
