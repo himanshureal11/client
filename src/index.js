@@ -5,14 +5,13 @@ import axios from 'axios';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";                  
 import "primeicons/primeicons.css";
-import { isEmpty } from 'lodash';
-
+import cookie from 'react-cookies'
 
 axios.interceptors.request.use(req=>{
   if(req.url.includes('/login')){
     return req
   }else{
-    const auth = !isEmpty(document.cookie) && JSON.parse(document.cookie)?.real11_user
+    const auth = cookie.load('real_11_user_token')
     req.headers.token = JSON.stringify(auth?.token)
     return req
   }

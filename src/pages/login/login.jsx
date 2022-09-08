@@ -6,6 +6,7 @@ import { isEmpty } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { EMAIL_VALIDATION } from '../../constant';
 import { useAuth } from '../../stores';
+import cookie from 'react-cookies'
 
 function Login() {
     const authUser = useAuth()
@@ -27,7 +28,8 @@ function Login() {
         const result = await authUser.login(loginUserData)
         if (result.data.status === 'success') {
             const data = result.data.data
-            document.cookie = JSON.stringify({real11_user: data})
+            cookie.save('real_11_user_token', data)
+            console.log('real_11_user_token',cookie.load('real_11_user_token'));
             await authUser.setUser(data)
             if(data.access_level < 100){
                 navigate(`/user_detail`)
