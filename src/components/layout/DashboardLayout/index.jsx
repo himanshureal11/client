@@ -10,7 +10,7 @@ function Index() {
     const height = window.innerHeight
     return (<Box component='div' style={{ minHeight: `${height}px`, display: 'flex' }}>
         <Header />
-        {user.access_level > 50 && <Sidebar />}
+        {user?.access_level > 50 && <Sidebar />}
         <Box component='div'  sx={{ flexGrow: 1, justifyContent: 'center', mt: '70px', display: 'flex', position: 'relative' }}>
             <Outlet />
         </Box>

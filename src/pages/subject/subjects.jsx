@@ -42,14 +42,17 @@ export default function Subjects(props) {
         const result = await getAllSubjects()
         if(result.data.status === 'success'){
             const subjects = result.data.data
-            setSubjects([...subjects])
+            if(!isEmpty(subjects)){
+                setSubjects([...subjects])
+            }
         }
     }
     const deleteSubject = async (e, id) => {
         e.preventDefault()
         const result =  await deleteSubjectById(id)
         if(result.data.status === 'success'){
-            getSubjects()
+            const data = subjects.filter(data => data._id !== id)
+            setSubjects(data)
         }
     }
     const editSubject = async (e, data) => {

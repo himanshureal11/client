@@ -33,7 +33,7 @@ function Header() {
   return (
     <AppBar position='fixed'
       sx={{
-        width: { md: user.access_level <= 50 ? '100%' : `calc(100% - ${layoutContext.drawerWidth}px)` },
+        width: { md: user?.access_level <= 50 ? '100%' : `calc(100% - ${layoutContext.drawerWidth}px)` },
         ml: { md: `${layoutContext.drawerWidth}px` }, background: '#75aee8db', boxShadow: '0px 0px 10px 0px #75aee8db'
       }}>
       <Toolbar>

@@ -19,7 +19,8 @@ function QuestionPaper(props) {
     const deleteQuestion = async (data) => {
         const result = await question.deleteQuestion(data._id)
         if(result.data.status === 'success'){
-            getQuestions()
+            const newQuestions = questionData.filter(({_id}) => _id !== data._id)
+            setQuestionData(newQuestions)
         }
     }
     const editQuestion = (data) => {
@@ -29,7 +30,9 @@ function QuestionPaper(props) {
         const result = await question.getQuestions(id)
         if(result.data.status === 'success'){
             const data = result.data.data
-            setQuestionData([...data])
+            if(!isEmpty(data)){
+                setQuestionData([...data])
+            }
         }
     }
     useEffect(() => {
