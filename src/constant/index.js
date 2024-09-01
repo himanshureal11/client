@@ -21,7 +21,7 @@ export const API_REQUEST_TYPE = {
     PATCH: 'PATCH'
 }
 
-export const apiCalling = async (type, api, data = undefined) => {
+export const ApiCalling = async (type, api, data = undefined) => {
     switch (type) {
         case API_REQUEST_TYPE.GET:
             return await axios.get(api)
